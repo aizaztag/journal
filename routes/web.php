@@ -1,4 +1,5 @@
 <?php
+require 'admin.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+
+Route::get('/manuscript', function () {
+    return view('frontend.test');
+});
+
+Route::get('/test', function () {
+
+    $cate =  new \App\Models\Journal();
+             $cate->title = 'dfdf';
+             $cate->user_id = '1';
+             $cate->category_id = '1';
+             $cate->save();
+
+
 });
