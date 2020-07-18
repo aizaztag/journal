@@ -1609,7 +1609,7 @@ h6 {
   background: #7c32ff;
   transition: all 0.5s;
   margin-top: 0; }
-  #header.header-scrolled .nav-menu a {
+  #header.header-scrolled .nav-menu a , #header.header-scrolled .log-menu a {
     color: #fff; }
   #header.header-scrolled .nav-menu ul li a {
     color: #000000; }
@@ -1698,7 +1698,7 @@ h6 {
   margin: 0; }
 
 /* Nav Meu Styling */
-.nav-menu a {
+.nav-menu a  {
   padding: 0 8px 0px 8px;
   text-decoration: none;
   display: inline-block;
@@ -1707,6 +1707,10 @@ h6 {
   font-size: 12px;
   text-transform: uppercase;
   outline: none; }
+
+.log-menu a {
+  color: #415094;
+}
 
 .nav-menu > li {
   margin-left: 10px; }

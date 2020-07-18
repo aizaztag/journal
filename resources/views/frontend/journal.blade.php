@@ -175,6 +175,40 @@
                         <div class="row">
                             {{--dynamic--}}
                             <div class="col-lg-12 col-md-12">
+                                <table id="table_id" class="display">
+                                    <thead>
+                                    <tr>
+                                        <th>Journal Name</th>
+                                        <th>ISSN</th>
+                                        <th>Launched</th>
+                                        <th>Current Issue</th>
+                                        <th>IF</th>
+                                        <th>Upc. Articles</th>
+                                        <th>Tot. Articles</th>
+                                        <th>RSS</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse ($journals as $journal)
+                                        @php
+                                             $values = explode(' ',trim($journal['name']));
+                                         @endphp
+                                           <tr>
+                                            {{--{{Request::url().'/'.strtolower($values[0])}}--}}
+                                            <td><a href="{{route('category', $journal['id'])}}">{{$journal['name']}}</a></td>
+                                            <td>{{$journal['issn']}}</td>
+                                            <td>{{date('Y', strtotime($journal['launched'])) }}</td>
+                                            <td>{{$journal['current_issue']}}</td>
+                                            <td>{{$journal['if']}}</td>
+                                            <td>{{$journal['if']}}</td>
+                                            <td>{{$journal['if']}}</td>
+                                            <td>{{$journal['if']}}</td>
+                                        </tr>
+                                    @empty
+                                        <p>No users</p>
+                                    @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </section>

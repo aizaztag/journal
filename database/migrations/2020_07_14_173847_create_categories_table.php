@@ -13,9 +13,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique()->nullable(false);
+            $table->string('slug');//->unique()->nullable(false);
+            $table->date('launched');
+            $table->string('issn')->nullable();
+            $table->string('current_issue')->nullable();
+            $table->decimal('if', 3)->nullable();
             $table->timestamps();
         });
     }
@@ -30,3 +36,4 @@ class CreateCategoriesTable extends Migration
         Schema::dropIfExists('categories');
     }
 }
+

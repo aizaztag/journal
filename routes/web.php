@@ -12,22 +12,19 @@ require 'admin.php';
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('frontend.index');
-});
+});*/
+
+Route::get('/' , 'HomeController@index');
 
 Route::get('/manuscript', function () {
-    return view('frontend.test');
+    return view('frontend.manuscript');
 });
 
 Route::get('/test', function () {
 
-    $cate =  new \App\Models\Journal();
-             $cate->title = 'dfdf';
-             $cate->user_id = '1';
-             $cate->category_id = '1';
-             $cate->save();
-
+return view('frontend.test');
 
 });
 
@@ -36,3 +33,17 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/journals', 'HomeController@journal')->name('journals');
+Route::get('/journals/{category}', 'HomeController@category')->name('category');
+
+
+
+
+
+
+
+
+
+
+
+

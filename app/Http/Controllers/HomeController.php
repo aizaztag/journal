@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = Category::paginate(10);
+        return view('frontend.index' , compact('users'));
+    }
+
+    public function journal()
+    {
+        $journals = Category::all()->toArray();
+        return view('frontend.journal' , compact('journals'));
+    }
+
+   public function category(Category $category)
+    {
+        return view('frontend.test', ['category' => $category->toArray()]);
     }
 }

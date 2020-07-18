@@ -3,24 +3,24 @@
         <div class="row align-items-center justify-content-center d-flex">
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="index.html">ABOUT</a></li>
-                    <li><a href="/">JOURNALS</a></li>
-                    <li><a href="archive.html">RESEARCH TOPIC</a></li>
-                    <li><a href="archive.html">ARTICLES</a></li>
+                    <li><a href="{{url('about')}}">ABOUT</a></li>
+                    <li class="menu-active"><a href="{{url('journals')}}">JOURNALS</a></li>
+                    <li><a href="{{url('topic')}}">RESEARCH TOPIC</a></li>
+                    <li><a href="{{url('articles')}}">ARTICLES</a></li>
                 </ul>
 
             </nav>
             <button type="button" class="btn btn-primary">Submit</button>
         </div>
         @auth
-            <ul>
-                <li class="float-right"><a href="/logout" style="position:relative; bottom: 27px">Logout</a></li>
+            <ul class="log-menu">
+                <li class="float-right"><a href="{{url('logout')}}" style="position:relative; bottom: 27px">Logout</a></li>
             </ul>
         @else
-            <nav>
-                <ul>
-                    <li class="float-right"><a href="/login" style="position:relative; bottom: 27px">Login</a></li>
-                    <li class="float-right"><a href="/register" style="position:relative; right:-100px; bottom: 27px">Register</a></li>
+            <nav class="">
+                <ul class="log-menu">
+                    <li class="float-right"><a href="{{url('login')}}" style="position:relative; bottom: 27px">Login</a></li>
+                    <li class="float-right"><a href="{{url('register')}}" style="position:relative; right:-100px; bottom: 27px">Register</a></li>
                 </ul>
             </nav>
         @endauth

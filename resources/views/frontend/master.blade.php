@@ -17,11 +17,9 @@
     <!-- Site Title -->
     <title>@yield('title') - {{ config('app.name') }}</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Rubik:500" rel="stylesheet">
-    <!--
-            CSS
-            ============================================= -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/linearicons.css')}}" >
+    <!--CSS============================================= -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/roboto_font.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/linearicons.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css')}}">
@@ -63,15 +61,12 @@
 
 <!-- start footer Area -->
 @include('frontend.partials.footer')
-
 <!-- End footer Area -->
-
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+    <script src="{{asset('frontend/js/popper.min.js')}}" crossorigin="anonymous"></script>
     <script src="{{asset('frontend/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script type="text/javascript"src="{{asset('frontend/js/maps_google.js')}}"></script>
     <script src="{{asset('frontend/js/easing.min.js')}}"></script>
     <script src="{{asset('frontend/js/hoverIntent.js')}}"></script>
     <script src="{{asset('frontend/js/superfish.min.js')}}"></script>
