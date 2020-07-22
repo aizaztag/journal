@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -45,7 +46,11 @@ class LoginController extends Controller
         ], $request->get('remember'))) {
             return redirect()->intended(route('admin.dashboard'));
         }
-        return back()->withInput($request->only('email', 'remember'));
+
+        return back()
+            ->withErrors('Username or password incorrect')
+            ->withInput($request->only('email', 'remember'));
+
     }
 
     /**

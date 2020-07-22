@@ -24,6 +24,18 @@ Route::get('/manuscript', function () {
 
 Route::get('/test', function () {
 
+   $name = 'Test Name';
+
+   $cat =  new \App\Models\Category();
+   $cat->name = $name;
+   $cat->slug = $name;
+   $cat->launched = '2020-07-20 23:36:56';
+   $cat->issn = 'issn';
+   $cat->current_issue = 'current_issue';
+   $cat->if = '2.3';
+
+   $cat->save(); die;
+
 return view('frontend.test');
 
 });
@@ -33,8 +45,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/journals', 'HomeController@journal')->name('journals');
-Route::get('/journals/{category}', 'HomeController@category')->name('category');
+Route::get('/journals', 'JournalController@journal')->name('journals');
+Route::get('/journals/{category}', 'JournalController@category')->name('category');
 
 
 

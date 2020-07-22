@@ -2,6 +2,60 @@
 @section('title') FrontEnd @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('frontend/css/dataTables.min.css')}}">
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #3e8e41;
+        }
+
+        #myInput {
+            box-sizing: border-box;
+            background-image: url('../frontend/images/searchicon.png');
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 14px 70px 12px 45px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myInput:focus {outline: 3px solid #ddd;}
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            z-index: 1;
+            top:56px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 0px 5px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+    </style>
 @endsection
 @section('content')
     <!-- Top Stories Area -->
@@ -178,6 +232,7 @@
                                 <table id="table_id" class="display">
                                     <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Journal Name</th>
                                         <th>ISSN</th>
                                         <th>Launched</th>
@@ -194,8 +249,20 @@
                                              $values = explode(' ',trim($journal['name']));
                                          @endphp
                                            <tr>
-                                            {{--{{Request::url().'/'.strtolower($values[0])}}--}}
-                                            <td><a href="{{route('category', $journal['id'])}}">{{$journal['name']}}</a></td>
+                                            <td>
+                                                @if ($journal['icon'] !=  null)
+                                                    <figure class="mt-2" style="width: 80px; height: auto;">
+                                                        <img src="{{ asset('storage/'.$journal['icon']) }}" class="img-fluid" alt="img" width="30px" height="30px">
+                                                    </figure>
+                                                @else
+                                                    <figure class="mt-2" style="width: 80px; height: auto;">
+                                                        <img src="{{asset('frontend/images/not_found_40.png')}}" class="img-fluid" alt="img" width="30px" height="30px">
+                                                    </figure>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{route('category', $journal['id'])}}">{{$journal['name']}}</a>
+                                            </td>
                                             <td>{{$journal['issn']}}</td>
                                             <td>{{date('Y', strtotime($journal['launched'])) }}</td>
                                             <td>{{$journal['current_issue']}}</td>
@@ -205,7 +272,6 @@
                                             <td>{{$journal['if']}}</td>
                                         </tr>
                                     @empty
-                                        <p>No users</p>
                                     @endforelse
                                     </tbody>
                                 </table>
@@ -214,27 +280,24 @@
                     </section>
                     <!-- Start Post Area -->
                 </div>
-
-
                 <div class="col-lg-4 sidebar">
                     <div class="single-widget protfolio-widget">
-                        <img class="img-fluid" src="{{ asset('frontend/img/blog/user2.png')}}" alt="">
-                        <a href="#">
-                            <h4>Peter Anderson</h4>
-                        </a>
-                        <p class="p-text">
-                            Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend
-                            money on boot camp whenyou can get. Boot camps have itssuppor ters andits detractors.
-                        </p>
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                        <img src="{{ asset('frontend/img/sign.png')}}" alt="">
+                        <div class=""></div>
+                        <div class="dropdown d-flex justify-content-center">
+                            <button onclick="myFunction()" class="dropbtn">Find Active Journals</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                @forelse ($journals as $journal)
+                                @php
+                                    $values = explode(' ',trim($journal['name']));
+                                @endphp
+                                     <a><a href="{{route('category', $journal['id'])}}">{{$journal['name']}}</a></a>
+                                @empty
+                                    <p>No Journals</p>
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
-
                     <div class="single-widget popular-posts-widget">
                         <div class="jq-tab-wrapper" id="horizontalTab">
                             <div class="jq-tab-menu">
@@ -395,8 +458,44 @@
 @endsection
 @push('scripts')
     <script>
+
+        //datatable
         $(document).ready( function () {
-            $('#table_id').DataTable();
+            $('#table_id').dataTable({
+                "columns": [
+                    { "width": "3%" },
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            });
         } );
+
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        //active category drop down
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
     </script>
 @endpush

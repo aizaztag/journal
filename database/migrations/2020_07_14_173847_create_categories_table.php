@@ -21,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->date('launched');
             $table->string('issn')->nullable();
             $table->string('current_issue')->nullable();
+            $table->string('icon')->nullable();
             $table->decimal('if', 3)->nullable();
             $table->timestamps();
         });

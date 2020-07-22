@@ -17,16 +17,24 @@
         <h1>{{ config('app.name') }}</h1>
     </div>
     <div class="login-box">
+
+        {{--errors--}}
+        @if($errors->any())
+          <p style="color: red ; text-align: center">{{ implode('', $errors->all(':message')) }}</p>
+        @endif
+
+        {{--errors--}}
+
         <form class="login-form" action="{{ route('admin.login.post') }}" method="POST" role="form">
             @csrf
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
             <div class="form-group">
                 <label class="control-label" for="email">Email Address</label>
-                <input class="form-control" type="email" id="email" name="email" placeholder="Email address" autofocus value="{{ old('email') }}">
+                <input class="form-control" type="email" id="email" name="email" placeholder="Email address" required="required" autofocus value="{{ old('email') }}">
             </div>
             <div class="form-group">
                 <label class="control-label" for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                <input class="form-control" type="password" id="password" name="password" placeholder="Password" required="required">
             </div>
             <div class="form-group">
                 <div class="utility">
