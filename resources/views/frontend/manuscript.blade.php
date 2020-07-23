@@ -259,14 +259,10 @@
 @endsection
 @section('scripts')
     @parent
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-
-
-
+    <script src="{{ asset('frontend/js/jquery.validate.js') }}"></script>
 @endsection
 @push('scripts')
     <script>
-
         // disable all tabs
         $('[data-toggle=tab]').click(function () {
             return false;}

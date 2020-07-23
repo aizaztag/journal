@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Section;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
-class SectionController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SectionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Section  $section
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Section $section)
+    public function show(Article $article)
     {
         //
     }
@@ -52,10 +52,10 @@ class SectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Section  $section
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Section $section)
+    public function edit(Article $article)
     {
         //
     }
@@ -64,10 +64,10 @@ class SectionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Section  $section
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -75,10 +75,10 @@ class SectionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Section  $section
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Section $section)
+    public function destroy(Article $article)
     {
         //
     }
