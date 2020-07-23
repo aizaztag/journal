@@ -25,6 +25,11 @@ class Category extends Model
         return $this->hasMany('App/Models/Journal');
     }
 
+    public function sections()
+    {
+        return $this->belongsToMany(Section::class, 'section_category', 'category_id', 'section_id');
+    }
+
     public function setDateAttribute( $value ) {
         //$this->attributes['date'] = (new Carbon($value))->format('d/m/y');
     }

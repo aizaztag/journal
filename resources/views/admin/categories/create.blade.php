@@ -56,13 +56,8 @@
     </div>
 @endsection
 @push('scripts')
-
-{{--
-    <link rel="stylesheet" href="{{asset('backend/css/bootstrap-datepicker.min.css')}}" />
---}}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+    {{--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />--}}
     <script src="{{asset('backend/js/bootstrap-datepicker.min.js')}}"></script>
-
     <script >
         $(document).ready(function () {
             $('#datePicker')

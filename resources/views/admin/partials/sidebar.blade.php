@@ -20,6 +20,12 @@
                 <span class="app-menu__label">Categories</span>
             </a>
         </li>
+        <li>
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.sections.index' ? 'active' : '' }}" href="{{ route('admin.sections.index') }}">
+                <i class="app-menu__icon fa fa-th"></i>
+                <span class="app-menu__label">Section</span>
+            </a>
+        </li>
         {{--real--}}
         <li class="treeview">
             <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i>

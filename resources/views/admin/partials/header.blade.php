@@ -1,5 +1,5 @@
-<header class="app-header">
-    <a class="app-header__logo" href="#">{{ config('app.name') }}</a>
+<header class="app-header" style="background-color: #7c32ff">
+    <a class="app-header__logo" style="background-color: #7c32ff" href="#"> {{ config('app.name') }}</a>
     <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <ul class="app-nav">
         <li class="app-search">
