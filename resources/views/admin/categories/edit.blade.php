@@ -13,6 +13,7 @@
                 <ul class="nav flex-column nav-tabs user-tabs">
                     <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">General</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sections" data-toggle="tab">Sections</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#issues" data-toggle="tab">Issues</a></li>
                 </ul>
             </div>
         </div>
@@ -74,6 +75,9 @@
                 </div>
                 <div class="tab-pane" id="sections">
                     <category-sections :categoryid="{{ $targetCategory->id }}" :categoryname="{{ json_encode($targetCategory->name) }}" ></category-sections>
+                </div>
+                <div class="tab-pane" id="issues">
+                    <category-issues :categoryid="{{ $targetCategory->id }}" :categoryname="{{ json_encode($targetCategory->name) }}" ></category-issues>
                 </div>
             </div>
 

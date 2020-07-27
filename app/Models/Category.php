@@ -25,6 +25,11 @@ class Category extends Model
         return $this->hasMany('App/Models/Journal');
     }
 
+    public function issues()
+    {
+        return $this->hasMany(Issue::class);
+    }
+
     public function sections()
     {
         return $this->belongsToMany(Section::class, 'section_category', 'category_id', 'section_id');
