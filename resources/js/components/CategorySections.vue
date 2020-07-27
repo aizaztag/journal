@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="tile">
-            <h3 class="tile-title">sections </h3>
+            <h3 class="tile-title">Sections </h3>
             <hr>
             <div class="tile-body">
                 <div class="row">
@@ -110,12 +110,6 @@
                     console.log(error);
                 });
 
-            },
-            selectValue(value) {
-                this.valueSelected = true;
-                this.currentValue = value.value;
-                this.currentQty = value.quantity;
-                this.currentPrice = value.price;
             },
             addcategoriesection() {
                 if (this.currentQty === null || this.currentPrice === null) {

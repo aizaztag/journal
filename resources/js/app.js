@@ -54,6 +54,7 @@ Vue.use(VueSwal);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('category-sections', require('./components/CategorySections').default);
+Vue.component('category-issues', require('./components/CategoryIssues').default);
 
 const app = new Vue({
     el: '#app'
